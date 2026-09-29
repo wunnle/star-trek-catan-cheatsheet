@@ -95,7 +95,7 @@ h1 span { color: var(--ink); }
 /* Crew grid */
 .crew { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .card {
-  --div: var(--cmd);
+  --div: #8cc9e0;
   display: grid; grid-template-columns: 74px minmax(0, 1fr);
   background: linear-gradient(180deg, #111829, var(--panel));
   border: 1px solid var(--panel-edge); border-radius: 12px; overflow: hidden;
@@ -118,9 +118,9 @@ h1 span { color: var(--ink); }
 .after { margin: 0; font-size: 12.5px; color: var(--ink-dim); }
 .orders small { display: block; color: var(--ink-dim); font-style: italic; font-size: 12.5px; }
 .band {
-  background: var(--div);
-  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
-  padding: 14px 0 12px; gap: 10px;
+  background: linear-gradient(180deg, var(--side-a) 0 50%, var(--side-b) 50% 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: space-around;
+  padding: 10px 0; gap: 10px;
   box-shadow: inset -6px 0 0 #0003;
 }
 .band svg { width: 34px; height: 40px; }
@@ -257,7 +257,7 @@ h1 span { color: var(--ink); }
   .title-row .en { font-size: 11px; }
   .after { font-size: 10.5px; }
   .orders small { font-size: 10.5px; }
-  .band { padding: 10px 0 8px; }
+  .band { padding: 6px 0; }
   .when { font-size: 10px; padding: 1px 6px; }
   .role { font-size: 11.5px; }
   .orders > div { padding: 8px 12px; }
@@ -304,119 +304,109 @@ h1 span { color: var(--ink); }
   </header>
 
   <div class="orders">
-    <div><b>Blue A side</b><p>After use, hand the card back or flip it to its red B side. <small>Karte abgeben oder wenden.</small></p></div>
-    <div><b>Red B side</b><p>After use, hand the card back. <small>Karte abgeben.</small></p></div>
-    <div><b>Finding a card</b><p>Match the full name on the top plate and the letter badge on the portrait.</p></div>
+    <div><b>Blue A side up</b><p>Use it, then hand the card back or flip it to the red B side. <small>Karte abgeben oder wenden.</small></p></div>
+    <div><b>Red B side up</b><p>Use it, then hand the card back. <small>Karte abgeben.</small></p></div>
+    <div><b>Two uses per card</b><p>Both sides show the same character and ability, so a card can be used twice before it goes back.</p></div>
   </div>
 
   <div class="crew">
-    <article class="card a">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">A5</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A5</div><div class="code b">B5</div></div>
       <div class="body">
         <div class="name">James T. Kirk</div>
         <div class="title-row"><span class="de">Schutz vor der 7</span><span class="en">Protection from the 7</span></div>
         <div class="when">At the next 7 · any turn</div>
         <p class="ability">More than 7 resources: <strong>you lose none.</strong> 7 or fewer: <strong>take 1 resource of your choice</strong>, before the Klingons move.</p>
-        <p class="after">After use: return it or flip it.</p>
       </div>
     </article>
 
-    <article class="card a">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">A3</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A3</div><div class="code b">B3</div></div>
       <div class="body">
         <div class="name">Spock</div>
         <div class="title-row"><span class="de">Rohstoffausgleich</span><span class="en">Resource compensation</span></div>
         <div class="when">After any roll except a 7</div>
         <p class="ability">If the roll gives you <strong>no resources</strong>, take <strong>1 resource card of your choice</strong>.</p>
-        <p class="after">After use: return it or flip it.</p>
       </div>
     </article>
 
-    <article class="card b">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">B6</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A6</div><div class="code b">B6</div></div>
       <div class="body">
         <div class="name">Leonard McCoy</div>
         <div class="title-row"><span class="de">Entwicklungskarte aussuchen</span><span class="en">Choose a development card</span></div>
         <div class="when">Your turn · buying a development card</div>
         <p class="ability">Replace <strong>1 of the 3 resources</strong> with any other resource. <strong>Pick your card from the top 3</strong> of the pile, then shuffle the pile.</p>
-        <p class="after">After use: return it.</p>
       </div>
     </article>
 
-    <article class="card a">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">A2</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A2</div><div class="code b">B2</div></div>
       <div class="body">
         <div class="name">Montgomery Scott</div>
         <div class="title-row"><span class="de">Hilfe beim Raumschiffbau</span><span class="en">Help with starship building</span></div>
         <div class="when">Your turn · building a starship</div>
         <p class="ability">Replace <strong>1 dilithium or 1 tritanium</strong> with <strong>1 resource of your choice</strong>.</p>
-        <p class="after">After use: return it or flip it.</p>
       </div>
     </article>
 
-    <article class="card b">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">B4</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A4</div><div class="code b">B4</div></div>
       <div class="body">
         <div class="name">Hikaru Sulu</div>
         <div class="title-row"><span class="de">Raumschiff versetzen</span><span class="en">Relocate a starship</span></div>
         <div class="when">Your turn</div>
         <p class="ability">Remove <strong>1 of your starships at the end of a route</strong> and place it somewhere else, following the normal building rules.</p>
-        <p class="after">After use: return it.</p>
       </div>
     </article>
 
-    <article class="card a">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">A1</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A1</div><div class="code b">B1</div></div>
       <div class="body">
         <div class="name">Uhura</div>
         <div class="title-row"><span class="de">Zwangshandel</span><span class="en">Forced trade</span></div>
         <div class="when">Your turn</div>
         <p class="ability">Demand <strong>1 specific resource from up to 2 players</strong>. For each one you receive, <strong>give that player 1 resource of your choice</strong> back.</p>
-        <p class="after">After use: return it or flip it.</p>
       </div>
     </article>
 
-    <article class="card b">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">B</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A</div><div class="code b">B</div></div>
       <div class="body">
         <div class="name">Pavel Chekov</div>
         <div class="title-row"><span class="de">Klingonen ins Asteroidenfeld</span><span class="en">Klingons to the asteroid field</span></div>
         <div class="when">Your turn · also before the production roll</div>
         <p class="ability">Move the <strong>Klingon cruiser to the asteroid field</strong>. Take <strong>1 resource</strong> from the planet it left.</p>
-        <p class="after">After use: return it.</p>
       </div>
     </article>
 
-    <article class="card b">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">B</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A</div><div class="code b">B</div></div>
       <div class="body">
         <div class="name">Christine Chapel</div>
         <div class="title-row"><span class="de">Rohstoff für Arme</span><span class="en">Resources for the poor</span></div>
         <div class="when">Your turn · after the production roll</div>
         <p class="ability">Pick <strong>1 resource card</strong> from the hand of a player with <strong>more victory points</strong> than you.</p>
-        <p class="after">After use: return it.</p>
       </div>
     </article>
 
-    <article class="card a">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">A</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A</div><div class="code b">B</div></div>
       <div class="body">
         <div class="name">Janice Rand</div>
         <div class="title-row"><span class="de">Freier Grenzposten</span><span class="en">Free trading post</span></div>
         <div class="when">Your turn</div>
         <p class="ability">Choose <strong>1 resource type</strong>. This turn, trade it <strong>2 : 1 as often as you like</strong>.</p>
-        <p class="after">After use: return it or flip it.</p>
       </div>
     </article>
 
-    <article class="card b">
-      <div class="band"><svg><use href="#i-cmd"/></svg><div class="code">B</div></div>
+    <article class="card">
+      <div class="band"><div class="code a">A</div><div class="code b">B</div></div>
       <div class="body">
         <div class="name">Sarek</div>
         <div class="title-row"><span class="de">Schwerter zu Pflugscharen</span><span class="en">Swords to plowshares</span></div>
         <div class="when">Your turn</div>
         <p class="ability">Discard <strong>1 of your Sternenflotte greift ein cards</strong>, then either build an <strong>outpost for 1 tritanium + 1 dilithium</strong>, or upgrade an outpost for <strong>2 water + 1 oxygen</strong>.</p>
-        <p class="after">After use: return it.</p>
       </div>
     </article>
   </div>
@@ -488,10 +478,10 @@ h1 span { color: var(--ink); }
     <section>
       <h2>Card sides</h2>
       <div class="legend">
-        <span><i style="background:var(--side-a)"></i>A side (blue badge): Kirk, Spock, Scott, Uhura, Rand</span>
-        <span><i style="background:var(--side-b)"></i>B side (red badge): McCoy, Sulu, Chekov, Chapel, Sarek</span>
+        <span><i style="background:var(--side-a)"></i>A side: blue badge, use then hand back or flip</span>
+        <span><i style="background:var(--side-b)"></i>B side: red badge, use then hand back</span>
       </div>
-      <p class="note" style="margin-top:10px">If a card's wording and this sheet disagree, the card wins.</p>
+      <p class="note" style="margin-top:10px">Six cards carry a number on both sides (A1/B1 to A6/B6); the other four show just A and B. If a card's wording and this sheet disagree, the card wins.</p>
     </section>
   </div>
 
