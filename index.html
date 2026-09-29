@@ -142,7 +142,20 @@ h1 span { color: var(--ink); }
 .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13.5px; color: var(--ink-dim); }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
-footer { font-size: 12px; color: var(--ink-dim); text-align: center; }
+/* kafagoz standard footer, dark variant */
+.footer { margin-top: 1.5rem; text-align: center; color: #737373; font-size: 12px; }
+.footer-divider { display: flex; align-items: center; }
+.footer-line { flex: 1; height: 1px; background: #ffffff14; }
+.footer-logo { margin: 0 1rem; display: inline-flex; }
+.footer-links { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding-top: 1rem; }
+.footer-dot { color: #404040; }
+.footer-nav { display: flex; align-items: center; gap: .5rem; }
+.footer-nav a { color: #737373; text-decoration: none; transition: color .2s; }
+.footer-nav a:hover, .footer-nav a:focus-visible { color: #d4d4d4; text-decoration: underline; }
+.footer-disclaimer { margin: .6rem 0 0; font-size: 11px; color: #5c5c5c; }
+@media (min-width: 640px) {
+  .footer-links { flex-direction: row; justify-content: center; gap: 1rem; }
+}
 
 /* Development cards */
 .sec-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
@@ -230,6 +243,7 @@ footer { font-size: 12px; color: var(--ink-dim); text-align: center; }
   .fleet, .rules-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .sec-head { break-before: page; margin-top: 0; }
   .dev p, .dev li, .rules-strip > div { font-size: 12px; }
+  .footer-links { flex-direction: row; justify-content: center; gap: 1rem; }
 }
 </style>
 </head>
@@ -426,7 +440,32 @@ footer { font-size: 12px; color: var(--ink-dim); text-align: center; }
     </section>
   </div>
 
-  <footer>Live long and prosper. Fan-made reference for Star Trek Catan (Kosmos).</footer>
+  <footer class="footer">
+    <div class="footer-divider">
+      <div class="footer-line"></div>
+      <div class="footer-logo">
+        <svg width="32" height="14" viewBox="0 0 48 21" fill="none" aria-label="kafagoz">
+          <path d="M24 12L32 11.7L24 0.4V12Z" fill="#0D79BE"/>
+          <path d="M24 12L16 11.7L24 0.4V12Z" fill="#3790BB"/>
+          <path d="M24 12L0.7 0L7 21L18 17L24 12Z" fill="#F69226"/>
+          <path d="M24 12L47.3 0L41 21L30 17L24 12Z" fill="#D06A29"/>
+          <path d="M24 12L41 21H7L24 12Z" fill="#ED7723"/>
+        </svg>
+      </div>
+      <div class="footer-line"></div>
+    </div>
+    <div class="footer-links">
+      <span>live long and prosper 🖖 by wunnle</span>
+      <nav class="footer-nav">
+        <a href="https://github.com/wunnle/star-trek-catan-cheatsheet" target="_blank" rel="noopener noreferrer">view on GitHub</a>
+        <span class="footer-dot">•</span>
+        <a href="https://kafagoz.com/" target="_blank" rel="noopener noreferrer">kafagoz.com</a>
+        <span class="footer-dot">•</span>
+        <a href="https://wunnle.dev/" target="_blank" rel="noopener noreferrer">wunnle.dev</a>
+      </nav>
+    </div>
+    <p class="footer-disclaimer">Fan-made reference for Star Trek Catan (Kosmos). Not affiliated with Kosmos, Catan GmbH or CBS Studios.</p>
+  </footer>
 </div>
 </body>
 </html>
