@@ -252,10 +252,12 @@ h1 span { color: var(--ink); }
   @page { size: A4 portrait; margin: 9mm; }
   html, body { margin: 0; min-height: 0; }
   body { padding: 0; font-size: 11.5px; background-attachment: scroll; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .sheet { gap: 10px; max-width: none; }
+  .sheet { gap: 8px; max-width: none; }
   h1 { font-size: 24px; }
   .crew { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
-  .glossary { grid-template-columns: 1fr 1fr; }
+  .glossary { grid-template-columns: 3fr 2fr; }
+  .glossary dl { gap: 2px 14px; }
+  .glossary dl div { padding-bottom: 1px; }
   .orders { grid-template-columns: repeat(3, 1fr); }
   .body { padding: 8px 11px; gap: 3px; }
   .name { font-size: 15px; }
@@ -267,14 +269,14 @@ h1 span { color: var(--ink); }
   .title-row .en { font-size: 11px; }
   .after { font-size: 10.5px; }
   .orders small { font-size: 10.5px; }
-  .setup { padding: 7px 12px; grid-template-columns: auto minmax(0, 1fr); }
+  .setup { padding: 6px 12px; grid-template-columns: auto minmax(0, 1fr); }
   .setup p, .seats { font-size: 11px; }
   .seats { grid-column: 2; flex-direction: row; }
   .setup b { font-size: 11px; }
   .band { padding: 6px 0; }
   .when { font-size: 10px; padding: 1px 6px; }
   .role { font-size: 11.5px; }
-  .orders > div { padding: 8px 12px; }
+  .orders > div { padding: 6px 12px; }
   .orders p { font-size: 11.5px; }
   .orders b, .glossary h2 { font-size: 11px; }
   .glossary section { padding: 9px 12px; }
@@ -318,14 +320,14 @@ h1 span { color: var(--ink); }
   </header>
 
   <div class="orders">
-    <div><b>Blue A side up</b><p>Use it, then swap it for any available card, or flip it to the red B side. <small>Karte abgeben oder wenden.</small></p></div>
-    <div><b>Red B side up</b><p>Use it, then hand the card back. <small>Karte abgeben.</small></p></div>
-    <div><b>Two uses per card</b><p>Both sides show the same character and ability, so a card can be used twice before it goes back.</p></div>
+    <div><b>First use · A side</b><p>Return the card to the display and take any other card, A side up. Or flip it to the B side to use it again. <small>Karte abgeben oder wenden.</small></p></div>
+    <div><b>Second use · B side</b><p>Return the card to the display, A side up, and take a new card. <small>Karte abgeben.</small></p></div>
+    <div><b>Timing</b><p>Never on the turn you received the card. Otherwise any time on your turn, even before rolling.</p></div>
   </div>
 
   <div class="setup">
     <b>Starting cards</b>
-    <p>The numbers set who starts with which card. The first player takes the A card numbered with the player count, then the numbers count down to the left.</p>
+    <p>Lay all crew cards out A side up as a display. The oldest player goes first and takes the card numbered with the player count; the numbers then count down to the left. The rest stay in the display.</p>
     <ol class="seats">
       <li><span>4 players</span>A4 Sulu → A3 Spock → A2 Scott → A1 Uhura</li>
       <li><span>3 players</span>A3 Spock → A2 Scott → A1 Uhura</li>
@@ -471,7 +473,7 @@ h1 span { color: var(--ink); }
   <div class="rules-strip">
     <div><b>Largest Starfleet · 2 VP</b>Largest Army in regular Catan. First to 3 played Starfleet Intervenes cards, then whoever has the most.</div>
     <div><b>Longest Supply Route · 2 VP</b>Longest Road in regular Catan. First to 5 connected starships, then whoever has the longest.</div>
-    <div><b>Playing cards</b>One per turn, never on the turn you bought it. <small>Victory point cards are the exception.</small></div>
+    <div><b>Playing cards</b>Each turn you may play 1 development card and 1 crew card, any time on your turn, even before rolling. <small>Not a development card on the turn you bought it; victory points are the exception.</small></div>
   </div>
 
   <div class="glossary">
@@ -504,7 +506,7 @@ h1 span { color: var(--ink); }
         <span><i style="background:var(--side-a)"></i>A side: blue badge, use then hand back or flip</span>
         <span><i style="background:var(--side-b)"></i>B side: red badge, use then hand back</span>
       </div>
-      <p class="note" style="margin-top:10px">Six cards carry a number on both sides (A1/B1 to A6/B6) for the starting deal; the other four show just A and B. If a card's wording and this sheet disagree, the card wins.</p>
+      <p class="note" style="margin-top:10px">Numbers 1–4 decide the starting deal. Kirk (A5/B5) and McCoy (A6/B6) also carry numbers but aren’t dealt at the start; the rules only use A1–A4. If a card's wording and this sheet disagree, the card wins.</p>
     </section>
   </div>
 
