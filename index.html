@@ -56,7 +56,7 @@ body {
 /* Header */
 header { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 header .emblem { width: 54px; height: 64px; flex: none; }
-header .titles { min-width: 0; flex: 1; }
+header .titles { min-width: 0; flex: 1 1 260px; }
 .eyebrow {
   font-family: var(--f-label); font-weight: 600; text-transform: uppercase;
   letter-spacing: .22em; font-size: 12px; color: var(--ink-dim);
@@ -69,6 +69,14 @@ h1 {
 }
 h1 span { color: var(--ink); }
 .lang { font-family: var(--f-label); font-size: 14px; color: var(--ink-dim); margin-top: 4px; }
+.pdf-link {
+  display: inline-flex; align-items: center; gap: 8px; flex: none;
+  font-family: var(--f-label); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; border: 1px solid #f3c33b80; background: #f3c33b12;
+  padding: 8px 14px; border-radius: 6px; transition: background .2s, color .2s;
+}
+.pdf-link:hover, .pdf-link:focus-visible { background: var(--gold); color: var(--space); }
+.pdf-link svg { width: 14px; height: 14px; }
 
 /* Standing orders */
 .orders {
@@ -240,6 +248,7 @@ h1 span { color: var(--ink); }
   .note { font-size: 10.5px; }
   .lang { font-size: 12px; }
   header .emblem { width: 40px; height: 48px; }
+  .pdf-link { display: none; }
   .fleet, .rules-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .sec-head { break-before: page; margin-top: 0; }
   .dev p, .dev li, .rules-strip > div { font-size: 12px; }
@@ -268,6 +277,10 @@ h1 span { color: var(--ink); }
       <h1>Crew <span>Manifest</span></h1>
       <div class="lang">English reference for the German crew cards. Match your card by the character's name.</div>
     </div>
+    <a class="pdf-link" href="star-trek-catan-cheatsheet.pdf" download>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"/></svg>
+      Download PDF
+    </a>
   </header>
 
   <div class="orders">
