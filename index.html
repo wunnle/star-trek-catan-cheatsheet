@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Star Trek Catan Crew Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<style>
+/* Layout: a bridge "crew manifest" — starfield ground, gold TOS header, 2-col grid of crew cards
+   each carrying its division's uniform colour and delta insignia. Single deliberate dark look. */
+:root {
+  color-scheme: dark;
+  --space: #04060d;
+  --panel: #0c111f;
+  --panel-edge: #1f2944;
+  --ink: #e9ecf4;
+  --ink-dim: #9aa4bd;
+  --gold: #f3c33b;          /* STAR TREK logo gold */
+  --cmd: #e6b53a;           /* command gold tunic */
+  --sci: #4a9be0;           /* science / medical blue */
+  --ops: #d9432f;           /* engineering / ops red */
+  --dip: #b48cd8;           /* Vulcan ambassador */
+  --f-display: "Michroma", "Eurostile", "Arial Black", sans-serif;
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-label: "Barlow Condensed", "Arial Narrow", sans-serif;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--space);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.45;
+  padding-inline: 16px;
+  padding-block: 28px 40px;
+  min-height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff9 50%, transparent 51%),
+    radial-gradient(1px 1px at 72% 8%, #fff8 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 38% 62%, #fffa 50%, transparent 51%),
+    radial-gradient(1px 1px at 88% 44%, #fff7 50%, transparent 51%),
+    radial-gradient(1px 1px at 22% 86%, #fff8 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 58% 32%, #fff9 50%, transparent 51%),
+    radial-gradient(1px 1px at 94% 78%, #fff6 50%, transparent 51%),
+    radial-gradient(1px 1px at 6% 52%, #fff7 50%, transparent 51%),
+    radial-gradient(ellipse 80% 50% at 85% -10%, #1b2a5a55, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 0% 110%, #3a1b4a44, transparent 70%);
+  background-size: 340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px, 340px 340px, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+}
+.sheet { max-width: 1080px; margin: 0 auto; display: grid; gap: 22px; }
+
+/* Header */
+header { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+header .emblem { width: 54px; height: 64px; flex: none; }
+header .titles { min-width: 0; flex: 1; }
+.eyebrow {
+  font-family: var(--f-label); font-weight: 600; text-transform: uppercase;
+  letter-spacing: .22em; font-size: 12px; color: var(--ink-dim);
+}
+h1 {
+  font-family: var(--f-display); font-weight: 400; margin: 2px 0 0;
+  font-size: clamp(22px, 4.2vw, 38px); letter-spacing: .06em; line-height: 1.1;
+  color: var(--gold); text-transform: uppercase; text-wrap: balance;
+  text-shadow: 0 0 18px #f3c33b40;
+}
+h1 span { color: var(--ink); }
+.lang { font-family: var(--f-label); font-size: 14px; color: var(--ink-dim); margin-top: 4px; }
+
+/* Standing orders */
+.orders {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px;
+  background: var(--panel-edge); border: 1px solid var(--panel-edge); border-radius: 10px; overflow: hidden;
+}
+.orders > div { background: var(--panel); padding: 12px 16px; min-width: 0; }
+.orders b {
+  display: block; font-family: var(--f-label); font-weight: 700; font-size: 13px;
+  text-transform: uppercase; letter-spacing: .14em; color: var(--gold); margin-bottom: 2px;
+}
+.orders p { margin: 0; font-size: 14px; color: var(--ink); }
+
+/* Crew grid */
+.crew { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.card {
+  --div: var(--cmd);
+  display: grid; grid-template-columns: 74px minmax(0, 1fr);
+  background: linear-gradient(180deg, #111829, var(--panel));
+  border: 1px solid var(--panel-edge); border-radius: 12px; overflow: hidden;
+  break-inside: avoid;
+}
+.card.sci { --div: var(--sci); }
+.card.ops { --div: var(--ops); }
+.card.dip { --div: var(--dip); }
+.band {
+  background: var(--div);
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+  padding: 14px 0 12px; gap: 10px;
+  box-shadow: inset -6px 0 0 #0003;
+}
+.band svg { width: 34px; height: 40px; }
+.uses { display: flex; flex-direction: column; gap: 5px; align-items: center; }
+.uses i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid #0009; display: block; }
+.uses small {
+  font-family: var(--f-label); font-weight: 700; font-size: 10px; letter-spacing: .1em;
+  color: #000b; text-transform: uppercase;
+}
+.body { padding: 13px 16px 14px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.name-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.name {
+  font-family: var(--f-display); font-size: 19px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink); line-height: 1.1;
+}
+.role { font-family: var(--f-label); font-size: 13px; color: var(--ink-dim); letter-spacing: .04em; }
+.role em { font-style: normal; color: var(--div); }
+.when {
+  justify-self: start;
+  font-family: var(--f-label); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--div); border: 1px solid color-mix(in srgb, var(--div) 55%, transparent);
+  background: color-mix(in srgb, var(--div) 10%, transparent);
+  padding: 2px 8px; border-radius: 4px;
+}
+.ability { margin: 0; font-size: 15px; }
+.ability strong { color: var(--gold); font-weight: 600; }
+.note { font-size: 12.5px; color: var(--ink-dim); margin: 0; }
+
+/* Glossary */
+.glossary { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.glossary section {
+  border: 1px solid var(--panel-edge); border-radius: 10px; background: var(--panel); padding: 12px 16px; min-width: 0;
+}
+.glossary h2 {
+  font-family: var(--f-label); font-weight: 700; font-size: 13px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gold); margin: 0 0 8px;
+}
+.glossary dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 18px; margin: 0; }
+.glossary dl div { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px dotted var(--panel-edge); padding-bottom: 3px; font-size: 14px; }
+.glossary dt { color: var(--ink); font-weight: 600; }
+.glossary dd { margin: 0; color: var(--ink-dim); text-align: right; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13.5px; color: var(--ink-dim); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+footer { font-size: 12px; color: var(--ink-dim); text-align: center; }
+
+/* Development cards */
+.sec-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.sec-head h2 {
+  font-family: var(--f-display); font-weight: 400; font-size: clamp(17px, 2.6vw, 22px); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--gold); margin: 0;
+}
+.sec-head p { margin: 0; font-family: var(--f-label); font-size: 14px; color: var(--ink-dim); }
+.fleet { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.dev {
+  --frame: #2a3463; --screen: #dcefee; --screen-ink: #10162a;
+  background: linear-gradient(160deg, #36427a, var(--frame) 45%, #1c2449);
+  border: 1px solid #56639c; border-radius: 16px; padding: 10px;
+  display: grid; grid-template-rows: auto 1fr; gap: 9px; min-width: 0; break-inside: avoid;
+  box-shadow: inset 0 0 0 3px #0d1330, 0 6px 18px #0008;
+}
+.plate {
+  background: linear-gradient(180deg, #f4f7f8, #b9c2c9 55%, #8e99a3);
+  color: #0d1220; border: 2px solid #111a33; border-radius: 4px;
+  font-family: var(--f-label); font-weight: 700; font-style: italic; font-size: 15px;
+  letter-spacing: .2em; text-transform: uppercase; text-align: center; padding: 3px 8px; line-height: 1.25; text-wrap: balance;
+  box-shadow: 0 0 0 3px #7c8794, 0 0 0 5px #111a33;
+  margin: 5px 5px 2px;
+}
+.screen {
+  background: linear-gradient(180deg, #eef8f7, var(--screen));
+  color: var(--screen-ink); border-radius: 6px; padding: 11px 13px 12px;
+  box-shadow: 0 0 0 3px #a3adb8, 0 0 0 5px #111a33; margin: 5px;
+  display: grid; gap: 7px; align-content: start;
+}
+.dev .eq {
+  justify-self: start; font-family: var(--f-label); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .12em;
+  color: #fff; background: var(--frame); padding: 2px 8px; border-radius: 4px;
+}
+.dev .t { display: block; font-family: var(--f-body); font-weight: 700; font-style: italic; font-size: 16.5px; color: var(--screen-ink); }
+.dev p { margin: 0; font-size: 14.5px; }
+.dev strong { color: #7a2a12; font-weight: 700; }
+.dev ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+.dev li { display: block; padding-top: 7px; border-top: 1px dashed #10162a40; font-size: 14px; }
+.dev li:first-child { border-top: 0; padding-top: 0; }
+.dev .map { display: block; font-family: var(--f-label); font-weight: 700; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: #2a3463; }
+.dev .vp { display: flex; flex-wrap: wrap; gap: 5px; }
+.dev .vp span { font-size: 12.5px; font-style: italic; font-weight: 600; border: 1px solid #10162a55; border-radius: 4px; padding: 1px 7px; color: var(--screen-ink); background: #ffffff80; }
+.rules-strip {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px;
+  background: var(--panel-edge); border: 1px solid var(--panel-edge); border-radius: 10px; overflow: hidden;
+}
+.rules-strip > div { background: var(--panel); padding: 10px 16px; min-width: 0; font-size: 14px; }
+.rules-strip b { display: block; font-family: var(--f-label); font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.rules-strip small { color: var(--ink-dim); font-size: 12.5px; }
+
+@media (max-width: 760px) {
+  .crew, .glossary { grid-template-columns: minmax(0, 1fr); }
+  .orders, .fleet, .rules-strip { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .glossary dl { grid-template-columns: minmax(0, 1fr); }
+  .card { grid-template-columns: 58px minmax(0, 1fr); }
+}
+@media print {
+  @page { size: A4 portrait; margin: 9mm; }
+  html, body { margin: 0; min-height: 0; }
+  body { padding: 0; font-size: 11.5px; background-attachment: scroll; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet { gap: 10px; max-width: none; }
+  h1 { font-size: 24px; }
+  .crew { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .glossary { grid-template-columns: 1fr 1fr; }
+  .orders { grid-template-columns: repeat(3, 1fr); }
+  .body { padding: 8px 11px; gap: 3px; }
+  .name { font-size: 15px; }
+  .ability { font-size: 12px; }
+  .card { grid-template-columns: 54px minmax(0, 1fr); }
+  .band svg { width: 26px; height: 30px; }
+  .band { padding: 10px 0 8px; }
+  .when { font-size: 10px; padding: 1px 6px; }
+  .role { font-size: 11.5px; }
+  .orders > div { padding: 8px 12px; }
+  .orders p { font-size: 11.5px; }
+  .orders b, .glossary h2 { font-size: 11px; }
+  .glossary section { padding: 9px 12px; }
+  .glossary dl div, .legend { font-size: 11.5px; }
+  .note { font-size: 10.5px; }
+  .lang { font-size: 12px; }
+  header .emblem { width: 40px; height: 48px; }
+  .fleet, .rules-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sec-head { break-before: page; margin-top: 0; }
+  .dev p, .dev li, .rules-strip > div { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- TOS arrowhead delta -->
+    <path id="delta" d="M20 0 C27 14 34 34 40 48 C33 42 27 39 20 39 C13 39 7 42 0 48 C6 34 13 14 20 0 Z"/>
+    <symbol id="i-cmd" viewBox="0 0 40 48"><use href="#delta" fill="#1a1406"/><path d="M20 15 l2.9 6.1 6.6.8-4.9 4.6 1.3 6.5-5.9-3.3-5.9 3.3 1.3-6.5-4.9-4.6 6.6-.8z" style="fill:var(--gold)"/></symbol>
+    <symbol id="i-sci" viewBox="0 0 40 48"><use href="#delta" fill="#07121f"/><circle cx="20" cy="25" r="5.2" fill="none" stroke="#d6e8ff" stroke-width="2"/><ellipse cx="20" cy="25" rx="10" ry="3.2" fill="none" stroke="#d6e8ff" stroke-width="1.4" transform="rotate(-20 20 25)"/></symbol>
+    <symbol id="i-med" viewBox="0 0 40 48"><use href="#delta" fill="#07121f"/><path d="M17.6 16h4.8v6.6H29v4.8h-6.6V34h-4.8v-6.6H11v-4.8h6.6z" fill="#e24a3a"/></symbol>
+    <symbol id="i-ops" viewBox="0 0 40 48"><use href="#delta" fill="#1a0806"/><path d="M20 25 m0 0 c0-2 2-3 3.6-2 c2.4 1.6 1.4 5.6-1.6 6.2 c-4 .8-6.8-3-5.6-6.6 c1.6-4.6 7.6-5.6 10.8-2.4 c3.8 3.8 2 10.8-3.4 12" fill="none" stroke="#ffd9d2" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-dip" viewBox="0 0 40 48"><use href="#delta" fill="#140a1d"/><path d="M20 15 L28 27 L20 35 L12 27 Z" fill="none" stroke="#eadcf7" stroke-width="1.8"/><circle cx="20" cy="27" r="2.4" fill="#eadcf7"/></symbol>
+  </defs>
+</svg>
+
+<div class="sheet">
+  <header>
+    <svg class="emblem" viewBox="0 0 40 48" aria-hidden="true"><use href="#delta" style="fill:var(--gold)"/><path d="M20 15 l2.9 6.1 6.6.8-4.9 4.6 1.3 6.5-5.9-3.3-5.9 3.3 1.3-6.5-4.9-4.6 6.6-.8z" style="fill:var(--space)"/></svg>
+    <div class="titles">
+      <div class="eyebrow">Star Trek Catan · Support Cards</div>
+      <h1>Crew <span>Manifest</span></h1>
+      <div class="lang">English reference for the German crew cards. Match your card by the character's name.</div>
+    </div>
+  </header>
+
+  <div class="orders">
+    <div><b>One on duty</b><p>You always hold exactly one crew card, face up in front of you.</p></div>
+    <div><b>Two uses</b><p>Each card can be used twice. Flip it after the first use.</p></div>
+    <div><b>Change of watch</b><p>After the second use, return it and pick any other available crew card.</p></div>
+  </div>
+
+  <div class="crew">
+    <article class="card">
+      <div class="band"><svg><use href="#i-cmd"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Kirk</div><div class="role">Captain</div></div>
+        <div class="when">When a 7 is rolled · any turn</div>
+        <p class="ability">More than 7 resource cards: <strong>you don't discard.</strong> 7 or fewer: <strong>take 1 resource of your choice</strong> from the supply.</p>
+      </div>
+    </article>
+
+    <article class="card sci">
+      <div class="band"><svg><use href="#i-sci"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Spock</div><div class="role">First Officer · <em>Erster Offizier</em></div></div>
+        <div class="when">After a production roll</div>
+        <p class="ability">If the roll gives you <strong>no resources</strong>, take <strong>1 resource of your choice</strong> from the supply.</p>
+      </div>
+    </article>
+
+    <article class="card sci">
+      <div class="band"><svg><use href="#i-med"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">McCoy</div><div class="role">Chief Medical Officer · <em>„Pille“</em></div></div>
+        <div class="when">Buying a Starfleet card</div>
+        <p class="ability">Pay with <strong>one substitute:</strong> replace any 1 of the required resources with any other resource.</p>
+      </div>
+    </article>
+
+    <article class="card ops">
+      <div class="band"><svg><use href="#i-ops"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Scotty</div><div class="role">Chief Engineer · <em>Chefingenieur</em></div></div>
+        <div class="when">Building a starship</div>
+        <p class="ability">Replace <strong>1 dilithium or 1 tritanium</strong> in the cost with <strong>any resource</strong> of your choice.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="band"><svg><use href="#i-cmd"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Sulu</div><div class="role">Helmsman · <em>Steuermann</em></div></div>
+        <div class="when">Your turn</div>
+        <p class="ability"><strong>Move 1 of your starships</strong> from the open end of one of your supply routes to the open end of another of your routes.</p>
+      </div>
+    </article>
+
+    <article class="card ops">
+      <div class="band"><svg><use href="#i-ops"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Uhura</div><div class="role">Communications · <em>Kommunikation</em></div></div>
+        <div class="when">Your turn · forced trade</div>
+        <p class="ability">Name the resource you want. <strong>Up to 2 rivals must each give you 1</strong> of it, and you give each of them 1 resource you choose in return.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="band"><svg><use href="#i-cmd"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Chekov</div><div class="role">Navigator</div></div>
+        <div class="when">Your turn · before the production roll</div>
+        <p class="ability">Move the <strong>Klingons to the asteroid field</strong> and take <strong>1 resource</strong> of the type the planet they left produces.</p>
+      </div>
+    </article>
+
+    <article class="card sci">
+      <div class="band"><svg><use href="#i-med"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Chapel</div><div class="role">Head Nurse · <em>Schwester Chapel</em></div></div>
+        <div class="when">Your turn · after the production roll</div>
+        <p class="ability">Take <strong>1 resource of your choice</strong> from a rival who has <strong>more victory points</strong> than you.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="band"><svg><use href="#i-cmd"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Rand</div><div class="role">Yeoman</div></div>
+        <div class="when">Your turn</div>
+        <p class="ability">Take <strong>1 resource of your choice</strong>. This turn you may trade that resource <strong>2 : 1</strong> with the supply, as if you owned its trading post.</p>
+      </div>
+    </article>
+
+    <article class="card dip">
+      <div class="band"><svg><use href="#i-dip"/></svg><div class="uses"><i></i><i></i><small>2×</small></div></div>
+      <div class="body">
+        <div class="name-row"><div class="name">Sarek</div><div class="role">Ambassador · <em>Botschafter</em></div></div>
+        <div class="when">Your turn · swords to plowshares</div>
+        <p class="ability">Discard <strong>1 of your Starfleet Intervenes cards</strong> to build an <strong>outpost for the cost of a starship</strong>.</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="sec-head">
+    <h2>Starfleet Cards</h2>
+    <p>The development cards. Same deck as regular Catan (14 / 6 / 5). Look for the silver title plate at the top.</p>
+  </div>
+
+  <div class="fleet">
+    <article class="dev">
+      <div class="plate">Sternenflotte greift ein</div>
+      <div class="screen">
+        <div class="eq">Knight · 14 cards</div>
+        <p><b class="t">Starfleet Intervenes</b>Move the <strong>Klingons</strong> to another planet and steal <strong>1 random resource</strong> from a player with an outpost there. Keep it face up: it counts toward Largest Starfleet.</p>
+      </div>
+    </article>
+    <article class="dev">
+      <div class="plate">Fortschritt</div>
+      <div class="screen">
+        <div class="eq">Progress · 6 cards, 2 of each</div>
+        <ul>
+          <li><b class="t">Utopia Planitia</b><span class="map">Road Building</span> Build <strong>2 starships</strong> for free.</li>
+          <li><b class="t">Forschungsstation</b><span class="map">Year of Plenty</span> Take <strong>any 2 resource cards</strong> from the supply.</li>
+          <li><b class="t">Monopol</b><span class="map">Monopoly</span> Name a resource. <strong>Every player gives you all</strong> their cards of it.</li>
+        </ul>
+      </div>
+    </article>
+    <article class="dev">
+      <div class="plate">Zeitsprung</div>
+      <div class="screen">
+        <div class="eq">Victory Point · 5 cards</div>
+        <p><b class="t">1 Siegpunkt</b>Name on the top plate, a big <strong>1</strong> below. Worth <strong>1 VP</strong>; keep it hidden until you win.</p>
+        <div class="vp"><span>Föderationsrat</span><span>Gekaperter Bird of Prey</span><span>Sternenflottenakademie</span><span>Warp 9</span><span>Zeitsprung</span></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="rules-strip">
+    <div><b>Largest Starfleet · 2 VP</b>Largest Army in regular Catan. First to 3 played Starfleet Intervenes cards, then whoever has the most.</div>
+    <div><b>Longest Supply Route · 2 VP</b>Longest Road in regular Catan. First to 5 connected starships, then whoever has the longest.</div>
+    <div><b>Playing cards</b>One per turn, never on the turn you bought it. <small>Victory point cards are the exception.</small></div>
+  </div>
+
+  <div class="glossary">
+    <section>
+      <h2>German words on the cards</h2>
+      <dl>
+        <div><dt>Nahrung</dt><dd>Food</dd></div>
+        <div><dt>Sauerstoff</dt><dd>Oxygen</dd></div>
+        <div><dt>Wasser</dt><dd>Water</dd></div>
+        <div><dt>Dilithium / Tritanium</dt><dd>same</dd></div>
+        <div><dt>Rohstoff</dt><dd>Resource</dd></div>
+        <div><dt>beliebig</dt><dd>of your choice</dd></div>
+        <div><dt>Vorrat</dt><dd>Supply</dd></div>
+        <div><dt>Mitspieler</dt><dd>Other player</dd></div>
+        <div><dt>Siegpunkte</dt><dd>Victory points</dd></div>
+        <div><dt>Raumschiff</dt><dd>Starship</dd></div>
+        <div><dt>Außenposten</dt><dd>Outpost</dd></div>
+        <div><dt>Zug</dt><dd>Turn</dd></div>
+        <div><dt>Siegpunkt</dt><dd>Victory point</dd></div>
+        <div><dt>ausspielen</dt><dd>play (a card)</dd></div>
+      </dl>
+    </section>
+    <section>
+      <h2>Uniform colours</h2>
+      <div class="legend">
+        <span><i style="background:var(--cmd)"></i>Command: Kirk, Sulu, Chekov, Rand</span>
+        <span><i style="background:var(--sci)"></i>Science &amp; Medical: Spock, McCoy, Chapel</span>
+        <span><i style="background:var(--ops)"></i>Engineering &amp; Comms: Scotty, Uhura</span>
+        <span><i style="background:var(--dip)"></i>Vulcan diplomat: Sarek</span>
+      </div>
+      <p class="note" style="margin-top:10px">Circles on each card's band are for the two uses. If a card's wording and this sheet disagree, the card wins.</p>
+    </section>
+  </div>
+
+  <footer>Live long and prosper. Fan-made reference for Star Trek Catan (Kosmos).</footer>
+</div>
+</body>
+</html>
